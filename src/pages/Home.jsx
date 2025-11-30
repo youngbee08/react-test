@@ -52,7 +52,7 @@ function Home() {
               EXPERIENCE CULINARY EXCELLENCE
             </h1>
             <h1
-              className="text-7xl font-extrabold text-white"
+              className="text-6xl font-extrabold text-white"
               style={{ fontFamily: "Plus Jakarta" }}
             >
               Savor Every Moment at Platia
@@ -84,18 +84,18 @@ function Home() {
             </div>
           </div>
           <div className="w-[50%] mt-10">
-            <div className="w-[400px] bg-black/30 h-[80%] rounded-3xl ms-auto py-3">
-              <h1 className="text-white text-2xl text-center" style={{fontFamily:"plus"}}>Make a Reservation</h1>
+            <div className="w-[400px] bg-black/30 h-auto rounded-3xl ms-auto pt-6 px-3">
+              <h1 className="text-white text-2xl text-center my-2" style={{fontFamily:"plus"}}>Make a Reservation</h1>
               <form action="" className="grid-cols-2">
-                <input type="text" placeholder="Your Name" />
-                <input type="email" placeholder="Your Email" />
-                <input type="tell" placeholder="Your Phone" />
-                <select name="" id="">
-                  <option value="">Guests</option>
+                <input className="border-amber-50 border-3 rounded-2xl  mx-2 p-4 w-[45%] my-3 outline-0 text-amber-50 " type="text" placeholder="Your Name" />
+                <input className="border-amber-50 border-3 rounded-2xl  mx-2  p-4 w-[45%] my-3 outline-0 text-amber-50 " type="email" placeholder="Your Email" />
+                <input className="border-amber-50 border-3 rounded-2xl  mx-2  p-4  w-[45%] outline-0  my-3 text-amber-50 " type="tell" placeholder="Your Phone" />
+                <select name="" style={{appearance:"none", WebkitAppearance:"none", backgroundImage:"none"}} className="border-amber-50 border-3 rounded-2xl  mx-2 outline-0 p-4 w-[45%]  my-3 text-amber-50 " id="">
+                  <option className="px-3" value="">Guests</option>
                 </select>
-                <input type="date" placeholder="mm/dd/yyyy" />
-                <input type="time"/>
-                <textarea className="w-[100%]" placeholder="Special requests or Dietary restrictions" id=""></textarea>
+                <input className="border-amber-50 border-3 rounded-2xl  p-4  my-3 outline-0 mx-2 w-[45%]  text-amber-50 " type="date" placeholder="mm/dd/yyyy" />
+                <input className="border-amber-50 border-3 rounded-2xl  p-4  my-3 outline-0 mx-2 w-[45%] text-amber-50 " type="time"/>
+                <textarea className="w-[95%] border-amber-50 border-3 rounded-2xl mx-2 my-3 p-4 outline-0 text-amber-50" placeholder="Special requests or Dietary restrictions" id=""></textarea>
               </form>
             </div>
           </div>
