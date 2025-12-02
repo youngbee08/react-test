@@ -9,15 +9,15 @@ function Home() {
       <section>
         <video
           src={assets.video}
-          className="lg:h-[100vh] h-[200vh] w-full object-cover"
+          className="lg:h-[100vh] h-[200vh] md:h-[120vh] w-full object-cover"
           autoPlay
           loop
           muted
           playsInline
         />
-        <div className="absolute top-0 left-0 w-full lg:h-full h-[200vh] bg-black/50"></div>
+        <div className="absolute top-0 left-0 w-full lg:h-full h-[200vh] md:h-[120vh] bg-black/50"></div>
 
-        <div className="absolute flex lg:flex-row flex-col justify-between h-[90vh] top-10 lg:px-20 px-2 pt-7">
+        <div className="absolute flex lg:flex-row flex-col justify-between h-[90vh] top-10 lg:px-20 px-2 md:px-5 pt-7">
           <div className="lg:w-[50%] w-[100%] mt-12 flex flex-col gap-7">
             <h1 className="text-[#E07844] text-[17px]">
               EXPERIENCE CULINARY EXCELLENCE
@@ -34,9 +34,9 @@ function Home() {
               generations to innovate culinary creations, we offer an
               unforgetable dining experience.
             </p>
-            <div className="flex lg:flex-row flex-col gap-6 w-100 h-auto">
+            <div className="flex lg:flex-row md:flex-row flex-col gap-6 w-100 h-auto">
               <button
-                className="bg-amber-600 rounded-2xl lg:w-auto w-[90%] text-[18px] text-white p-4
+                className="bg-amber-600 rounded-2xl lg:w-auto md:w-auto  w-[90%] text-[18px] text-white p-4
                     hover:bg-[#d75919]
                     transition-all duration-200
                     hover:-translate-y-1"
@@ -45,7 +45,7 @@ function Home() {
               </button>
 
               <button
-                className="border-white border-2 rounded-2xl lg:width-auto w-[90%] text-[18px] text-white p-4
+                className="border-white border-2 rounded-2xl lg:w-auto md:w-auto  w-[90%] text-[18px] text-white p-4
                     hover:border-[#E07844] hover:text-[#E07844]
                     transition-all duration-200
                     hover:-translate-y-1"
@@ -55,7 +55,7 @@ function Home() {
             </div>
           </div>
           <div className="lg:w-[50%] w-[100%] mt-3 ">
-            <div className="w-[360px] bg-black/30 h-auto rounded-3xl lg:ms-auto  pt-6 px-3">
+            <div className="w-[360px] md:w-[100%] bg-black/30 h-auto rounded-3xl lg:ms-auto  pt-6 px-3">
               <h1 className="text-white text-2xl text-center my-2" style={{fontFamily:"plus"}}>Make a Reservation</h1>
               <form action="" className="grid-cols-2">
                 <input className="border-[#9E9D93] border-3 rounded-2xl  mx-2 p-4 w-[45%] my-3 outline-0 text-amber-50 " type="text" placeholder="Your Name" />
