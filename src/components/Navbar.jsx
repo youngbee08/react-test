@@ -41,7 +41,7 @@ function Navbar() {
 
       {/* Mobile Toggle Button */}
       <button className=" absolute top-4 start-[85%] md:start-[92%]"  onClick={() => setOpen(!open)}>
-        {open ? <X size={28} className="text-black md:ms-3" /> : <Menu size={28} className="ms-3 " />}
+        {open ? <X size={28} className="text-black md:ms-3" /> : <Menu size={28} className="ms-3 lg:hidden" />}
       </button>
 
       {/* Mobile Nav */}
