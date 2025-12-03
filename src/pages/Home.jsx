@@ -6,7 +6,7 @@ function Home() {
   return (
     <div>
     
-      <section>
+      <section id="home">
         <video
           src={assets.video}
           className="lg:h-[100vh] h-[200vh] md:h-[120vh] w-full object-cover"
@@ -54,7 +54,7 @@ function Home() {
               </button>
             </div>
           </div>
-          <div className="lg:w-[39%] w-[100%] mt-3 md:mt-20">
+          <div className="lg:w-[39%] w-[100%] lg:mt-0 mt-3 md:mt-20">
             <div className="w-[100%] md:w-[100%] bg-black/30 h-auto rounded-3xl lg:ps-auto  pt-6 ps-3">
               <h1 className="text-white text-2xl text-center my-2" style={{fontFamily:"plus"}}>Make a Reservation</h1>
               <form action="" className="grid-cols-2">
@@ -75,7 +75,7 @@ function Home() {
           </div>
         </div>
       </section>
-      <section className="lg:h-[120vh] md:h-auto h-auto bg-[#F8EFEB] py-5 lg:px-20 md:px-5 px-2">
+      <section id="about" className="lg:h-[120vh] md:h-auto h-auto bg-[#F8EFEB] py-5 lg:px-20 md:px-5 px-2">
         <h1 style={{ fontFamily: "Plus Jakarta" }} className="text-4xl font-bold text-center my-5">About</h1>
         <p className="text-center md-text-[17px] mb-10">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit assumenda ea reiciendis!</p>
         <div className="flex lg:flex-row md:flex-col flex-col relative md:gap-7">
@@ -108,7 +108,7 @@ function Home() {
         </div>
       </section>
     </div>
-  );
+  ); 
 }
 
 export default Home;

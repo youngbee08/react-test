@@ -11,10 +11,10 @@ function Navbar() {
       {/* Desktop Nav */}
       <ul className="lg:flex gap-7 hidden md:hidden">
         <li className="text-[#E07844] text-[18px] ">
-          <a href="">Home</a>
+          <a href="#home">Home</a>
         </li>
         <li className="text-white text-[18px] hover:text-[#E07844] transition-all duration-200">
-          <a href="">About</a>
+          <a href="#about">About</a>
         </li>
         <li className="text-white text-[18px] hover:text-[#E07844] transition-all duration-200">
           <a href="">Menu</a>
