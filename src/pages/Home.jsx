@@ -247,15 +247,19 @@ function Home() {
           {displayedFood.map((item) => (
             <div
               key={`${item.category}-${item.id}`} // use category + id
-              className="bg-white shadow-lg p-5 rounded-xl hover:scale-105 duration-200 cursor-pointer"
+              className="bg-white shadow-lg h-[350px] rounded-2xl overflow-hidden relative hover:scale-105 duration-200 cursor-pointer"
             >
               <img
                 src={item.img}
                 alt={item.name}
-                className="rounded-lg w-full h-40 object-cover mb-4"
+                className=" w-full h-50 object-cover mb-4"
               />
+              <div className="flex flex-col p-5 gap-2">
               <h2 className="font-bold text-xl mb-1">{item.name}</h2>
-              <p className="text-orange-600 font-semibold">{item.price}</p>
+              <p className="bg-orange-600 absolute top-42 end-6 text-white font-semibold p-3 rounded-3xl">{item.price}</p>
+              <p  className="px-3 py-1 bg-green-500 rounded-3xl absolute top-4">{item.tag}</p>
+              <p>{item.description}</p>
+              </div>
             </div>
           ))}
         </div>
