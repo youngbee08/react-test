@@ -222,7 +222,7 @@ function Home() {
         </p>
 
         {/* CATEGORY NAV */}
-        <nav className="flex justify-center gap-20 p-4 mb-12 rounded-4xl bg-white">
+        <nav className="lg:flex lg:justify-center grid-cols-3 md:grid md:grid-cols-5 md:gap-4 gap-20 p-4 md:p-2 mb-12 rounded-4xl bg-white">
           {categories.map((cat) => (
             <button
               key={cat}
@@ -243,7 +243,7 @@ function Home() {
         </nav>
 
         {/* FOOD CARDS */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-8">
           {displayedFood.map((item) => (
             <div
               key={`${item.category}-${item.id}`} // use category + id
