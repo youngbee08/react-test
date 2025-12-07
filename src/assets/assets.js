@@ -9,6 +9,8 @@ import main2 from "../assets/restaurant/main-2.webp"
 import main6 from "../assets/restaurant/main-6.webp"
 import drink2 from "../assets/restaurant/drink-2.webp"
 import drink6 from "../assets/restaurant/drink-6.webp"
+import main8 from "../assets/restaurant/main-8.webp"
+import main9 from "../assets/restaurant/main-9.webp"
 
 
 const assets = {
@@ -23,6 +25,8 @@ const assets = {
     main6,
     drink2,
     drink6,
+    main8,
+    main9,
 
 
 }

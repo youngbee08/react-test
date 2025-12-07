@@ -1,8 +1,9 @@
 import React from "react";
 import assets from "../assets/assets";
-import { Award, Menu, Trophy } from "lucide-react";
+import { Award, Download, Menu, Star, Timer, TimerIcon, TimerReset, Trophy } from "lucide-react";
 import { useState } from "react";
 import { foodData } from "../components/data"; // <-- your data file
+import { BiStar } from "react-icons/bi";
 
 function Home() {
   const categories = ["all", "appetizers", "Entrees", "sweet_treats", "Beverages"];
@@ -210,7 +211,7 @@ function Home() {
         </div>
       </section>
       
-      <section id="menu" className="bg-[#F8EFEB] py-14 px-4 lg:px-20">
+      <section id="menu" className="bg-[#F8EFEB] pt-14 px-4 lg:px-20">
         <h1
           style={{ fontFamily: "Plus Jakarta" }}
           className="text-4xl font-bold text-center mb-3"
@@ -243,25 +244,79 @@ function Home() {
         </nav>
 
         {/* FOOD CARDS */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 sm:grid-cols-2 md:grid-cols-1 gap-8">
           {displayedFood.map((item) => (
             <div
               key={`${item.category}-${item.id}`} // use category + id
-              className="bg-white shadow-lg h-[350px] rounded-2xl overflow-hidden relative hover:scale-105 duration-200 cursor-pointer"
+              className="bg-white shadow-lg h-[350px] rounded-2xl overflow-hidden relative hover:scale-103 hover:border-2 hover:border-amber-500 duration-200 cursor-pointer"
             >
               <img
                 src={item.img}
                 alt={item.name}
                 className=" w-full h-50 object-cover mb-4"
               />
-              <div className="flex flex-col p-5 gap-2">
+              <div className="flex flex-col p-5 lg:p-3 gap-2">
               <h2 className="font-bold text-xl mb-1">{item.name}</h2>
               <p className="bg-orange-600 absolute top-42 end-6 text-white font-semibold p-3 rounded-3xl">{item.price}</p>
-              <p  className="px-3 py-1 bg-green-500 rounded-3xl absolute top-4">{item.tag}</p>
+              <p  className="px-3 py-1 bg-green-500 text-white rounded-3xl absolute top-4">{item.tag}</p>
               <p>{item.description}</p>
               </div>
             </div>
           ))}
+        </div>
+      </section>
+      
+        
+      <section className="bg-[#F8EFEB] py-14 px-4 lg:px-20">
+        <h1  style={{ fontFamily: "Plus Jakarta" }} className="text-4xl font-bold justify-center items-center gap-3 flex  mb-3 "><Star size={"30px"} color="#E07844" />Today's Chef Recommendations</h1>
+        <p className="text-center text-[20px] text-gray-600">Carefully curated dishes featuring the finest seasonal ingredients</p>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 sm:grid-cols-2 mt-10 md:grid-cols-1 gap-8">
+            <div
+              
+              className="bg-white shadow-lg h-[400px] rounded-2xl overflow-hidden relative hover:scale-103 hover:border-2 hover:border-amber-500 duration-200 cursor-pointer"
+            >
+              <img
+              src= {assets.main9}
+                className=" w-full h-50 object-cover mb-4"
+              />
+              <div className="flex flex-col py-5 px-5 lg:px-4 lg:py-2 gap-2">
+              <h2 className="font-bold text-xl mb-1">Pan-Seared Duck Breast</h2>
+              <p className="text-orange-600 text-2xl absolute top-52 end-6  font-semibold p-3 rounded-3xl">$34.50</p>
+              <p  className="px-3 py-1 bg-[#d25212] rounded-3xl text-white absolute top-4">  CHEF's PICK</p>
+              <p>Etiam porta sem malesuada magna mollis euismod. Cras mattis consectetur purus sit amet fermentum.</p>
+              <div className="flex justify-between my-4">
+                <p className="items-center flex gap-2"><Timer color="#d25212"/>25 min preparation</p>
+                <div className="flex justify-center gap-4">
+                  <p className="py-1 px-2 text-amber-700 bg-amber-200 rounded-2xl">GF</p>
+                  <p className="py-1 px-2 text-green-700 bg-green-200 rounded-2xl">DF</p>
+                </div>
+              </div>
+              </div>
+            </div>
+            <div
+              
+              className="bg-white shadow-lg h-[400px] rounded-2xl overflow-hidden relative hover:scale-103 hover:border-2 hover:border-amber-500 duration-200 cursor-pointer"
+            >
+              <img
+              src= {assets.main8}
+                className=" w-full h-50 object-cover mb-4"
+              />
+              <div className="flex flex-col py-5 px-5 lg:px-4 lg:py-2 gap-2">
+              <h2 className="font-bold text-xl mb-1">Lobster Thermidor Risotto
+              </h2>
+              <p className="text-orange-600 text-2xl absolute top-52 end-6  font-semibold p-3 rounded-3xl">$39.90</p>
+              <p  className="px-3 py-1 bg-[#d25212] rounded-3xl text-white absolute top-4">  CHEF's PICK</p>
+              <p>Fusce dapibus tellus ac cursus commodo tortor mauris condimentum nibh ut fermentum massa.</p>
+              <div className="flex justify-between my-4">
+                <p className="items-center flex gap-2"><Timer color="#d25212"/>25 min preparation</p>
+                <div className="flex justify-center gap-4">
+                  <p className="py-1 px-2 text-green-700 bg-green-200 rounded-2xl">SF</p>
+                  <p className="py-1 px-2 text-amber-700 bg-amber-200 rounded-2xl">PREMIUM</p>
+                </div>
+              </div>
+              </div>
+            </div>
         </div>
       </section>
     </div>
