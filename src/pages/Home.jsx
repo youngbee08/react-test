@@ -1,22 +1,111 @@
 import React from "react";
 import assets from "../assets/assets";
-import { Award, Download, Menu, Star, Timer, TimerIcon, TimerReset, Trophy } from "lucide-react";
+import {
+  Award,
+  Download,
+  Menu,
+  Star,
+  Timer,
+  TimerIcon,
+  TimerReset,
+  Trophy,
+} from "lucide-react";
 import { useState } from "react";
 import { foodData } from "../components/data"; // <-- your data file
 import { BiStar } from "react-icons/bi";
+import { useEffect, useRef } from "react";
 
 function Home() {
-  const categories = ["all", "appetizers", "Entrees", "sweet_treats", "Beverages"];
+  const categories = [
+    "all",
+    "appetizers",
+    "Entrees",
+    "sweet_treats",
+    "Beverages",
+  ];
   const [activeTab, setActiveTab] = useState("all");
 
   const allFoods = [
     ...foodData.appetizers.map((item) => ({ ...item, category: "appetizers" })),
     ...foodData.Entrees.map((item) => ({ ...item, category: "Entrees" })),
-    ...foodData.sweet_treats.map((item) => ({ ...item, category: "sweet_treats" })),
+    ...foodData.sweet_treats.map((item) => ({
+      ...item,
+      category: "sweet_treats",
+    })),
     ...foodData.Beverages.map((item) => ({ ...item, category: "Beverages" })),
   ];
 
   const displayedFood = activeTab === "all" ? allFoods : foodData[activeTab];
+
+  const testimonials = [
+    {
+      name: "Emma Rodriguez",
+      handle: "@emmarod",
+      img: "https://randomuser.me/api/portraits/women/44.jpg",
+      text: "Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa.",
+    },
+    {
+      name: "Emma Rodriguez",
+      handle: "@emmarod",
+      img: "https://randomuser.me/api/portraits/women/44.jpg",
+      text: "Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa.",
+    },
+    {
+      name: "Emma Rodriguez",
+      handle: "@emmarod",
+      img: "https://randomuser.me/api/portraits/women/44.jpg",
+      text: "Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa.",
+    },
+    {
+      name: "David Kumar",
+      handle: "@davidkumar",
+      img: "https://randomuser.me/api/portraits/men/30.jpg",
+      text: "Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.",
+    },
+    {
+      name: "David Kumar",
+      handle: "@davidkumar",
+      img: "https://randomuser.me/api/portraits/men/30.jpg",
+      text: "Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.",
+    },
+    {
+      name: "Sophia Lee",
+      handle: "@sophialee",
+      img: "https://randomuser.me/api/portraits/women/68.jpg",
+      text: "Texit tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.",
+    },
+    {
+      name: "Sophia Lee",
+      handle: "@sophialee",
+      img: "https://randomuser.me/api/portraits/women/68.jpg",
+      text: "Texit tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.",
+    },
+  ];
+
+  const cardWidth = 100 / 3; // 3 cards visible
+  const duplicated = [...testimonials, ...testimonials];
+
+  const [index, setIndex] = useState(0);
+  const intervalRef = useRef(null);
+
+  useEffect(() => {
+    startAutoSlide();
+    return () => stopAutoSlide();
+  }, []);
+
+  const startAutoSlide = () => {
+    stopAutoSlide();
+    intervalRef.current = setInterval(() => {
+      setIndex((prev) => {
+        const next = prev + 1;
+        return next >= testimonials.length ? 0 : next;
+      });
+    }, 3000);
+  };
+
+  const stopAutoSlide = () => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
+  };
 
   return (
     <div>
@@ -132,6 +221,7 @@ function Home() {
           </div>
         </div>
       </section>
+
       <section
         id="about"
         className="lg:h-[120vh] md:h-auto h-auto bg-[#F8EFEB] py-5 lg:px-20 md:px-5 px-2"
@@ -210,7 +300,7 @@ function Home() {
           </div>
         </div>
       </section>
-      
+
       <section id="menu" className="bg-[#F8EFEB] pt-14 px-4 lg:px-20">
         <h1
           style={{ fontFamily: "Plus Jakarta" }}
@@ -256,67 +346,178 @@ function Home() {
                 className=" w-full h-50 object-cover mb-4"
               />
               <div className="flex flex-col p-5 lg:p-3 gap-2">
-              <h2 className="font-bold text-xl mb-1">{item.name}</h2>
-              <p className="bg-orange-600 absolute top-42 end-6 text-white font-semibold p-3 rounded-3xl">{item.price}</p>
-              <p  className="px-3 py-1 bg-green-500 text-white rounded-3xl absolute top-4">{item.tag}</p>
-              <p>{item.description}</p>
+                <h2 className="font-bold text-xl mb-1">{item.name}</h2>
+                <p className="bg-orange-600 absolute top-42 end-6 text-white font-semibold p-3 rounded-3xl">
+                  {item.price}
+                </p>
+                <p className="px-3 py-1 bg-green-500 text-white rounded-3xl absolute top-4">
+                  {item.tag}
+                </p>
+                <p>{item.description}</p>
               </div>
             </div>
           ))}
         </div>
       </section>
-      
-        
+
       <section className="bg-[#F8EFEB] py-14 px-4 lg:px-20">
-        <h1  style={{ fontFamily: "Plus Jakarta" }} className="text-4xl font-bold justify-center items-center gap-3 flex  mb-3 "><Star size={"30px"} color="#E07844" />Today's Chef Recommendations</h1>
-        <p className="text-center text-[20px] text-gray-600">Carefully curated dishes featuring the finest seasonal ingredients</p>
+        <h1
+          style={{ fontFamily: "Plus Jakarta" }}
+          className="text-4xl font-bold justify-center items-center gap-3 flex  mb-3 "
+        >
+          <Star size={"30px"} color="#E07844" />
+          Today's Chef Recommendations
+        </h1>
+        <p className="text-center text-[20px] text-gray-600">
+          Carefully curated dishes featuring the finest seasonal ingredients
+        </p>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 sm:grid-cols-2 mt-10 md:grid-cols-1 gap-8">
-            <div
-              
-              className="bg-white shadow-lg h-[400px] rounded-2xl overflow-hidden relative hover:scale-103 hover:border-2 hover:border-amber-500 duration-200 cursor-pointer"
-            >
-              <img
-              src= {assets.main9}
-                className=" w-full h-50 object-cover mb-4"
-              />
-              <div className="flex flex-col py-5 px-5 lg:px-4 lg:py-2 gap-2">
+          <div className="bg-white shadow-lg h-[400px] rounded-2xl overflow-hidden relative hover:scale-103 hover:border-2 hover:border-amber-500 duration-200 cursor-pointer">
+            <img
+              src={assets.main9}
+              className=" w-full h-50 object-cover mb-4"
+            />
+            <div className="flex flex-col py-5 px-5 lg:px-4 lg:py-2 gap-2">
               <h2 className="font-bold text-xl mb-1">Pan-Seared Duck Breast</h2>
-              <p className="text-orange-600 text-2xl absolute top-52 end-6  font-semibold p-3 rounded-3xl">$34.50</p>
-              <p  className="px-3 py-1 bg-[#d25212] rounded-3xl text-white absolute top-4">  CHEF's PICK</p>
-              <p>Etiam porta sem malesuada magna mollis euismod. Cras mattis consectetur purus sit amet fermentum.</p>
+              <p className="text-orange-600 text-2xl absolute top-52 end-6  font-semibold p-3 rounded-3xl">
+                $34.50
+              </p>
+              <p className="px-3 py-1 bg-[#d25212] rounded-3xl text-white absolute top-4">
+                {" "}
+                CHEF's PICK
+              </p>
+              <p>
+                Etiam porta sem malesuada magna mollis euismod. Cras mattis
+                consectetur purus sit amet fermentum.
+              </p>
               <div className="flex justify-between my-4">
-                <p className="items-center flex gap-2"><Timer color="#d25212"/>25 min preparation</p>
+                <p className="items-center flex gap-2">
+                  <Timer color="#d25212" />
+                  25 min preparation
+                </p>
                 <div className="flex justify-center gap-4">
-                  <p className="py-1 px-2 text-amber-700 bg-amber-200 rounded-2xl">GF</p>
-                  <p className="py-1 px-2 text-green-700 bg-green-200 rounded-2xl">DF</p>
+                  <p className="py-1 px-2 text-amber-700 bg-amber-200 rounded-2xl">
+                    GF
+                  </p>
+                  <p className="py-1 px-2 text-green-700 bg-green-200 rounded-2xl">
+                    DF
+                  </p>
                 </div>
               </div>
-              </div>
             </div>
-            <div
-              
-              className="bg-white shadow-lg h-[400px] rounded-2xl overflow-hidden relative hover:scale-103 hover:border-2 hover:border-amber-500 duration-200 cursor-pointer"
-            >
-              <img
-              src= {assets.main8}
-                className=" w-full h-50 object-cover mb-4"
-              />
-              <div className="flex flex-col py-5 px-5 lg:px-4 lg:py-2 gap-2">
-              <h2 className="font-bold text-xl mb-1">Lobster Thermidor Risotto
+          </div>
+          <div className="bg-white shadow-lg h-[400px] rounded-2xl overflow-hidden relative hover:scale-103 hover:border-2 hover:border-amber-500 duration-200 cursor-pointer">
+            <img
+              src={assets.main8}
+              className=" w-full h-50 object-cover mb-4"
+            />
+            <div className="flex flex-col py-5 px-5 lg:px-4 lg:py-2 gap-2">
+              <h2 className="font-bold text-xl mb-1">
+                Lobster Thermidor Risotto
               </h2>
-              <p className="text-orange-600 text-2xl absolute top-52 end-6  font-semibold p-3 rounded-3xl">$39.90</p>
-              <p  className="px-3 py-1 bg-[#d25212] rounded-3xl text-white absolute top-4">  CHEF's PICK</p>
-              <p>Fusce dapibus tellus ac cursus commodo tortor mauris condimentum nibh ut fermentum massa.</p>
+              <p className="text-orange-600 text-2xl absolute top-52 end-6  font-semibold p-3 rounded-3xl">
+                $39.90
+              </p>
+              <p className="px-3 py-1 bg-[#d25212] rounded-3xl text-white absolute top-4">
+                {" "}
+                CHEF's PICK
+              </p>
+              <p>
+                Fusce dapibus tellus ac cursus commodo tortor mauris condimentum
+                nibh ut fermentum massa.
+              </p>
               <div className="flex justify-between my-4">
-                <p className="items-center flex gap-2"><Timer color="#d25212"/>25 min preparation</p>
+                <p className="items-center flex gap-2">
+                  <Timer color="#d25212" />
+                  25 min preparation
+                </p>
                 <div className="flex justify-center gap-4">
-                  <p className="py-1 px-2 text-green-700 bg-green-200 rounded-2xl">SF</p>
-                  <p className="py-1 px-2 text-amber-700 bg-amber-200 rounded-2xl">PREMIUM</p>
+                  <p className="py-1 px-2 text-green-700 bg-green-200 rounded-2xl">
+                    SF
+                  </p>
+                  <p className="py-1 px-2 text-amber-700 bg-amber-200 rounded-2xl">
+                    PREMIUM
+                  </p>
                 </div>
               </div>
-              </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="Testimonials" className="bg-[#F8EFEB] py-14 px-4 lg:px-20">
+        {/* Title */}
+        <div className="max-w-6xl mx-auto text-center px-5 mb-12">
+          <h2 className="text-4xl font-bold text-gray-800 mb-3">
+            What Our Customers Say
+          </h2>
+          <p className="text-gray-600 max-w-2xl mx-auto">
+            Honest reviews from real users who love our service.
+          </p>
+        </div>
+
+        {/* Carousel */}
+        <div
+          className="max-w-6xl grid grid-cols-3 mx-auto overflow-hidden"
+          onMouseEnter={stopAutoSlide}
+          onMouseLeave={startAutoSlide}
+        >
+          <div
+            className="flex transition-transform duration-700"
+            style={{ transform: `translateX(-${index * 100}%)` }}
+          >
+            {testimonials.map((item, i) => (
+              <div key={i} className="w-full flex-shrink-0 px-5">
+                <div className="bg-white rounded-2xl p-8 shadow-md">
+                  {/* Stars */}
+                  <div className="flex gap-1 text-yellow-500 text-xl mb-4">
+                    {Array(5)
+                      .fill()
+                      .map((_, i) => (
+                        <Star
+                          key={i}
+                          className="w-5 h-5"
+                          stroke="none"
+                          fill="currentColor"
+                        />
+                      ))}
+                  </div>
+
+                  {/* Text */}
+                  <p className="text-gray-700 mb-6 leading-relaxed">
+                    {item.text}
+                  </p>
+
+                  {/* User */}
+                  <div className="flex items-center gap-3">
+                    <img
+                      src={item.img}
+                      className="w-12 h-12 rounded-full object-cover"
+                      alt={item.name}
+                    />
+                    <div>
+                      <h3 className="font-bold text-lg">{item.name}</h3>
+                      <p className="text-sm text-gray-500">{item.handle}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Dots */}
+        <div className="flex justify-center mt-6 gap-3">
+          {testimonials.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setIndex(i)}
+              className={`w-3 h-3 rounded-full transition-all ${
+                i === index ? "bg-orange-600 scale-110" : "bg-gray-400"
+              }`}
+            />
+          ))}
         </div>
       </section>
     </div>
